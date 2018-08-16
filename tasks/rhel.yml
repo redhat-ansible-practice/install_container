@@ -1,0 +1,22 @@
+---
+# tasks file for dockerd
+
+  - name: Add docker Repo
+    yum_repository:
+      name: "{{ docker_repo_name }}"
+      description: "{{ docker_repo_description }}"
+      haseurl: "{{ docker_rhel_repo }}"
+      async: yes
+      enabled: yes
+      state: yes 
+
+  - name: Install required rpms
+    yum:
+      state: latest
+      name: 
+        - yum-utils
+        - device-mapper-persistent-data
+        - docker-ce
+        - lvm2
+    handlers:
+      - start and enable docker

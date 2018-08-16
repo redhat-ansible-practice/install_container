@@ -1,0 +1,42 @@
+---
+  
+  - name: install all required debs
+    apt:
+      name: "{{ item }}"
+      state: latest
+    loop:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+
+  - name: add docker apt key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+      id: 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88
+      update_cache: yes
+
+  - name: add docker repo
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu/dists/zesty/stable/binary-amd64/
+      state: present
+      filename: docker-repo
+      update_cache: yes
+
+  - name: install docker
+    apt:
+      name: docker-ce
+      state: latest
+
+  - name: add user to the docker group
+    user:
+      name: "{{ home_user }}"
+      state: present
+      groups: docker
+
+  - name: start docker
+    systemd:
+      name: docker
+      state: started
+      enabled: yes

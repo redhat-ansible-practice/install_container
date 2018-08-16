@@ -1,0 +1,18 @@
+---
+# tasks file for dockerd
+
+  - name: Add docker Repo
+    yum_repository:
+      name: "{{ docker_repo_name }}"
+      description: "{{ docker_repo_description }}"
+      baseurl: "{{ docker_repo }}"
+      async: yes
+      enabled: yes
+      state: yes 
+
+  - name: Install required rpms
+    dnf:
+      state: latest
+      name: dnf-plugins-core, docker-ce
+    handlers:
+      - start and enable docker

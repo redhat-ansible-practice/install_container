@@ -1,18 +1,11 @@
 ---
 # tasks file for dockerd
 
-  - name: Add docker Repo
-    yum_repository:
-      name: "{{ docker_repo_name }}"
-      description: "{{ docker_repo_description }}"
-      baseurl: "{{ docker_repo }}"
-      async: yes
-      enabled: yes
-      state: yes 
+  include_tasks: fedora.yml
+  when: ansible_pkg_mgr == "dnf" and ansible_distribution == "Fedora"
 
-  - name: Install required rpms
-    dnf:
-      state: latest
-      name: dnf-plugins-core, docker-ce
-    handlers:
-      - start and enable docker
+  include_tasks: rhel.yml
+  when: ansible_pkg_mgr == "yum" and ( ansible_distribution == "RedHat" or ansible_distribution == "CentOS" )
+
+  include_tasks: ubuntu.yml
+  when: ansible_pkg_mgr == "apt"
