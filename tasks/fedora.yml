@@ -13,6 +13,8 @@
   - name: Install required rpms
     dnf:
       state: latest
-      name: dnf-plugins-core, docker-ce
+      name: 
+        - dnf-plugins-core
+        - docker-ce
     handlers:
       - start and enable docker
