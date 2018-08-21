@@ -2,13 +2,12 @@
   
   - name: install all required debs
     apt:
-      name: "{{ item }}"
       state: latest
-    loop:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - software-properties-common
+      name:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
 
   - name: add docker apt key
     apt_key:
@@ -34,9 +33,5 @@
       name: "{{ home_user }}"
       state: present
       groups: docker
+    notify: start and enable docker
 
-  - name: start docker
-    systemd:
-      name: docker
-      state: started
-      enabled: yes
