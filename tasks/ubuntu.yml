@@ -1,6 +1,6 @@
 ---
   
-  - name: install all required debs
+  - name: install all the required debs for containers
     apt:
       state: latest
       name:
