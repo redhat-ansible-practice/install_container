@@ -1,7 +1,7 @@
 Role Name
 =========
 
-This role installs docker.
+This role installs container software.
 
 Requirements
 ------------
@@ -21,7 +21,7 @@ Example Playbook
 
     - hosts: all
       roles:
-         - dockerd 
+         - ansible_container
 
 License
 -------
