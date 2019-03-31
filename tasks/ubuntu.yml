@@ -13,7 +13,7 @@
     apt_key:
       url: https://download.docker.com/linux/ubuntu/gpg
       state: present
-      id: 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88
+      id: "9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88"
       update_cache: yes
 
   - name: add docker repo

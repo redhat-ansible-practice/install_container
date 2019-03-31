@@ -2,7 +2,7 @@
 # handlers file for dockerd
 
   - name: start and enable docker
-    systemctl:
+    systemd:
       name: docker
       state: started
       enabled: yes

@@ -5,10 +5,10 @@
     yum_repository:
       name: "{{ docker_repo_name }}"
       description: "{{ docker_repo_description }}"
-      baseurl: "{{ docker_repo }}"
+      baseurl: "{{ docker_fedora_repo }}"
       async: yes
       enabled: yes
-      state: yes 
+      state: present 
 
   - name: Install required rpms
     dnf:
@@ -16,5 +16,5 @@
       name: 
         - dnf-plugins-core
         - docker-ce
-    handlers:
+    notify:
       - start and enable docker

@@ -1,11 +1,14 @@
 ---
 # tasks file for dockerd
 
-  include_tasks: fedora.yml
-  when: ansible_pkg_mgr == "dnf" and ansible_distribution == "Fedora"
+  - name: Install Fedora Container
+    include_tasks: fedora.yml
+    when: ansible_pkg_mgr == "dnf" and ansible_distribution == "Fedora"
 
-  include_tasks: rhel.yml
-  when: ansible_pkg_mgr == "yum" and ( ansible_distribution == "RedHat" or ansible_distribution == "CentOS" )
+  - name: Install RHEL Container
+    include_tasks: rhel.yml
+    when: ansible_pkg_mgr == "yum" and ( ansible_distribution == "RedHat" or ansible_distribution == "CentOS" )
 
-  include_tasks: ubuntu.yml
-  when: ansible_pkg_mgr == "apt"
+  - name: Install Ubuntu Container
+    include_tasks: ubuntu.yml
+    when: ansible_pkg_mgr == "apt"

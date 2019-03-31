@@ -18,5 +18,5 @@
         - device-mapper-persistent-data
         - docker-ce
         - lvm2
-    handlers:
+    notify:
       - start and enable docker

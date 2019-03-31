@@ -1,8 +1,8 @@
 ---
 # defaults file for dockerd
 
-docker_fedora_repo: https://download.docker.com/linux/fedora/docker-ce.repo
+docker_fedora_repo: "https://download.docker.com/linux/fedora/$releasever/$basearch/stable"
 docker_rhel_repo: https://download.docker.com/linux/centos/docker-ce.repo
-docker_fedora_repo_description: docker fedora repo
+docker_fedora_repo_description: "docker fedora repo"
 docker_repo_name: docker-ce
-
+docker_repo_description: Fedora Docker
